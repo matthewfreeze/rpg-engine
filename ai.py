@@ -1,7 +1,7 @@
 """AI integration for dynamic enemy generation using Gemini API."""
 import os
 import json
-from typing import Dict, Optional
+from typing import Any, Dict, Optional
 import google.generativeai as genai
 
 
@@ -19,7 +19,7 @@ def initialize_gemini() -> Optional[genai.GenerativeModel]:
     return genai.GenerativeModel('gemini-pro')
 
 
-def generate_enemy(biome: str) -> Dict[str, any]:
+def generate_enemy(biome: str) -> Dict[str, Any]:
     """Generate a random enemy based on biome using Gemini API.
     
     Args:
@@ -110,7 +110,7 @@ Return only valid JSON without any markdown formatting or code blocks."""
         return fallback_enemies.get(biome, fallback_enemies["Magitek Factory"])
 
 
-def generate_enemy_simple(biome: str) -> Dict[str, any]:
+def generate_enemy_simple(biome: str) -> Dict[str, Any]:
     """Generate enemy without AI (for testing or when API unavailable).
     
     Args:
