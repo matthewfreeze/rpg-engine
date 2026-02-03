@@ -3,6 +3,7 @@ import random
 from typing import Optional, Tuple
 from rich.console import Console
 from rich.panel import Panel
+from rich.prompt import Prompt
 from rich.table import Table
 from rich.text import Text
 
@@ -178,7 +179,7 @@ class Battle:
         self.console.print("2. Magic")
         self.console.print("3. Wait (skip turn)")
         
-        choice = input("\nChoose action (1-3): ").strip()
+        choice = Prompt.ask("\nChoose action", choices=["1", "2", "3"], default="1")
         
         if choice == "1":
             return "attack"
@@ -202,7 +203,12 @@ class Battle:
             self.console.print(f"{i}. {spell}")
         self.console.print(f"{len(spell_list) + 1}. Cancel")
         
-        choice = input(f"\nChoose spell (1-{len(spell_list) + 1}): ").strip()
+        choices = [str(i) for i in range(1, len(spell_list) + 2)]
+        choice = Prompt.ask(
+            f"\nChoose spell",
+            choices=choices,
+            default=str(len(spell_list) + 1)
+        )
         
         try:
             choice_num = int(choice)

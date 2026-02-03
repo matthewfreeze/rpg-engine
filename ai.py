@@ -5,6 +5,10 @@ from typing import Any, Dict, Optional
 import google.generativeai as genai
 
 
+# Gemini model configuration
+GEMINI_MODEL = 'gemini-pro'
+
+
 def initialize_gemini() -> Optional[genai.GenerativeModel]:
     """Initialize Gemini API with API key from environment.
     
@@ -16,7 +20,7 @@ def initialize_gemini() -> Optional[genai.GenerativeModel]:
         return None
     
     genai.configure(api_key=api_key)
-    return genai.GenerativeModel('gemini-pro')
+    return genai.GenerativeModel(GEMINI_MODEL)
 
 
 def generate_enemy(biome: str) -> Dict[str, Any]:
