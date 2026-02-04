@@ -1,2 +1,2 @@
-rich==13.7.0
-google-generativeai==0.3.2
+rich
+google-generativeai
